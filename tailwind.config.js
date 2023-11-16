@@ -14,6 +14,9 @@ export default {
       ALABASTER: "#fafbff",
       WHITE: "#ffffff",
     },
+    fontFamily: {
+      ubuntu: ["Ubuntu", "sans-serif"],
+    },
   },
   plugins: [],
 };
