@@ -4,6 +4,7 @@ import Form from "./components/Form";
 import Navigation from "./components/Navigation";
 import { steps } from "./utils/steps";
 import ActionButtons from "./components/ActionButton";
+import Plan from "./components/Plan";
 
 function App() {
   const [activeStep, setActiveStep] = useState<number>(2);
@@ -18,7 +19,7 @@ function App() {
             <Navigation activeStep={activeStep} />
           </div>
           <div className="flex-1 flex justify-center bg-MAGNOLIA md:bg-WHITE pb-4 md:pb-0">
-            <div className="self-start md:self-auto relative w-10/12 md:w-9/12 flex flex-col space-y-10 bg-WHITE py-8 pb-8 md:pb-0 p-4 rounded-md -mt-20 md:mt-0">
+            <div className="self-start md:self-auto relative w-10/12 md:w-9/12 flex flex-col space-y-10 bg-WHITE shadow-sm py-8 pb-8 md:pb-0 p-4 rounded-md -mt-20 md:mt-0">
               <div className="md:mt-0 flex flex-col space-y-1">
                 <h1 className="font-bold text-BLUE text-[28px] md:text-[32px]">
                   <span>{`${steps[activeStep - 1].title}`}</span>
@@ -36,6 +37,8 @@ function App() {
                     handleSubmit={() => setActiveStep(2)}
                   />
                 )}
+
+                {activeStep === 2 && <Plan />}
                 {/** Main content end */}
               </div>
 
