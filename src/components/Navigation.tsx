@@ -13,7 +13,7 @@ const Navigation = ({ activeStep }: NavigationProps) => {
 
   if (smSize) {
     return (
-      <div className="relative">
+      <div className="relative w-screen max-w-full">
         <img
           src={MobileSidebar}
           width={375}
@@ -25,7 +25,7 @@ const Navigation = ({ activeStep }: NavigationProps) => {
             <StepIndicator
               key={index}
               order={index + 1}
-              title={step}
+              name={step.name}
               active={activeStep === index + 1}
             />
           ))}
@@ -46,7 +46,7 @@ const Navigation = ({ activeStep }: NavigationProps) => {
           <StepIndicator
             key={index}
             order={index + 1}
-            title={step}
+            name={step.name}
             active={activeStep === index + 1}
           />
         ))}

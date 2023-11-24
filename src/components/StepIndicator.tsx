@@ -1,12 +1,12 @@
 interface StepIndicatorProps {
   order: number;
   active?: boolean;
-  title: string;
+  name: string;
 }
 const StepIndicator = ({
   order,
   active = false,
-  title,
+  name: title,
 }: StepIndicatorProps) => {
   return (
     <div className="flex flex-row items-center space-x-3">
