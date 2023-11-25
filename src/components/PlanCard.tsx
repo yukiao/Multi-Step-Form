@@ -27,6 +27,8 @@ const PlanCard = ({
       {createElement("img", {
         src: iconSrc,
         className: "self-start",
+        width: 40,
+        height: 40,
       })}
 
       <div className="flex flex-col">

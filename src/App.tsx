@@ -5,11 +5,17 @@ import Navigation from "./components/Navigation";
 import { steps } from "./utils/steps";
 import ActionButtons from "./components/ActionButton";
 import Plan from "./components/Plan";
+import { useAppDispatch } from "./hooks";
+import { setPersonalInfo } from "./features/personalInfo/personalInfo.slice";
+import { updatePlan } from "./features/plan/plan.slice";
 
 function App() {
-  const [activeStep, setActiveStep] = useState<number>(2);
+  const [activeStep, setActiveStep] = useState<number>(1);
 
   const personalInfoRef = useRef<HTMLFormElement>(null);
+  const selectPlanRef = useRef<HTMLFormElement>(null);
+
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -34,11 +40,22 @@ function App() {
                 {activeStep === 1 && (
                   <Form
                     ref={personalInfoRef}
-                    handleSubmit={() => setActiveStep(2)}
+                    handleSubmit={(values) => {
+                      setActiveStep(2);
+                      dispatch(setPersonalInfo(values));
+                    }}
                   />
                 )}
 
-                {activeStep === 2 && <Plan />}
+                {activeStep === 2 && (
+                  <Plan
+                    ref={selectPlanRef}
+                    handleSubmit={(val) => {
+                      setActiveStep(3);
+                      dispatch(updatePlan(val.value));
+                    }}
+                  />
+                )}
                 {/** Main content end */}
               </div>
 
@@ -57,6 +74,15 @@ function App() {
                               bubbles: true,
                             }),
                           );
+                          break;
+                        case 2:
+                          selectPlanRef.current?.dispatchEvent(
+                            new Event("submit", {
+                              cancelable: true,
+                              bubbles: true,
+                            }),
+                          );
+                          break;
                       }
                     }}
                   />
@@ -80,6 +106,15 @@ function App() {
                             bubbles: true,
                           }),
                         );
+                        break;
+                      case 2:
+                        selectPlanRef.current?.dispatchEvent(
+                          new Event("submit", {
+                            cancelable: true,
+                            bubbles: true,
+                          }),
+                        );
+                        break;
                     }
                   }}
                 />

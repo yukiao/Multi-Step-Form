@@ -3,6 +3,7 @@ import TextInput from "./TextInput";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ComponentPropsWithoutRef, forwardRef } from "react";
+import { useAppSelector } from "../hooks";
 
 const bioSchema = z.object({
   name: z.string().min(1, "This field is required"),
@@ -18,15 +19,17 @@ interface FormProps extends ComponentPropsWithoutRef<"form"> {
 
 const Form = forwardRef<HTMLFormElement, FormProps>(
   ({ handleSubmit, ...props }, ref) => {
+    const personalInfo = useAppSelector((state) => state.personalInfo);
+
     const {
       register,
       handleSubmit: onSubmit,
       formState: { errors },
     } = useForm<Bio>({
       defaultValues: {
-        name: "",
-        email: "",
-        phone: "",
+        name: personalInfo.name,
+        email: personalInfo.email,
+        phone: personalInfo.phone,
       },
       resolver: zodResolver(bioSchema),
     });

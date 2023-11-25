@@ -2,14 +2,23 @@ import PlanCard from "./PlanCard";
 import ArcadeIcon from "../assets/images/icon-arcade.svg";
 import AdvancedIcon from "../assets/images/icon-advanced.svg";
 import ProIcon from "../assets/images/icon-pro.svg";
-import { useState } from "react";
+import { forwardRef } from "react";
 import Switch from "./Switch";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { updateIsYearySubscription } from "../features/plan/plan.slice";
 
 type PricingPlan = {
   iconSrc: string;
   price: number;
   name: string;
 };
+
+interface PlanProps {
+  handleSubmit: (values: { value: number }) => void;
+}
 
 const pricingPlans: PricingPlan[] = [
   {
@@ -29,19 +38,43 @@ const pricingPlans: PricingPlan[] = [
   },
 ];
 
-const Plan = () => {
-  const [activeIndex, setActiveIndex] = useState<number>(-1);
-  const [isYearly, setIsYearly] = useState<boolean>(false);
+const planSchema = z.object({
+  value: z.number().refine((val) => val >= 0 && val <= 2, {
+    message: "Please select the plan",
+  }),
+});
+
+const Plan = forwardRef<HTMLFormElement, PlanProps>(({ handleSubmit }, ref) => {
+  const activeIndex = useAppSelector((state) => state.plan.selectedPlan);
+  const isYearly = useAppSelector((state) => state.plan.yearlySubscription);
+  const dispatch = useAppDispatch();
+
+  const {
+    setValue,
+    formState: { errors },
+    handleSubmit: onSubmit,
+    watch,
+  } = useForm<{ value: number }>({
+    defaultValues: {
+      value: activeIndex,
+    },
+
+    resolver: zodResolver(planSchema),
+  });
+
   return (
-    <div className="flex flex-col">
+    <form ref={ref} onSubmit={onSubmit(handleSubmit)} className="flex flex-col">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {pricingPlans.map((plan, index) => (
           <PlanCard
+            key={index}
             iconSrc={plan.iconSrc}
             price={plan.price}
             name={plan.name}
-            active={activeIndex === index}
-            onClick={() => setActiveIndex(index)}
+            active={watch().value === index}
+            onClick={() => {
+              setValue("value", index);
+            }}
             yearly={isYearly}
           />
         ))}
@@ -57,7 +90,9 @@ const Plan = () => {
         </span>
         <Switch
           checked={isYearly}
-          onChecked={(e) => setIsYearly(e.target.checked)}
+          onChecked={(e) =>
+            dispatch(updateIsYearySubscription(e.target.checked))
+          }
         />
         <span
           className={`text-sm font-medium ${
@@ -67,8 +102,11 @@ const Plan = () => {
           Yearly
         </span>
       </div>
-    </div>
+      <p className="mt-5 overflow-x-hidden whitespace-nowrap text-ellipsis text-STRAWBERRY_RED font-bold text-sm">
+        {errors.value?.message}
+      </p>
+    </form>
   );
-};
+});
 
 export default Plan;
