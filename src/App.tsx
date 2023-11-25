@@ -8,6 +8,7 @@ import Plan from "./components/Plan";
 import { useAppDispatch } from "./hooks";
 import { setPersonalInfo } from "./features/personalInfo/personalInfo.slice";
 import { updatePlan } from "./features/plan/plan.slice";
+import PickAddons from "./components/PickAddons";
 
 function App() {
   const [activeStep, setActiveStep] = useState<number>(1);
@@ -56,6 +57,7 @@ function App() {
                     }}
                   />
                 )}
+                {activeStep === 3 && <PickAddons />}
                 {/** Main content end */}
               </div>
 
@@ -82,6 +84,10 @@ function App() {
                               bubbles: true,
                             }),
                           );
+                          break;
+
+                        case 3:
+                          setActiveStep(4);
                           break;
                       }
                     }}
@@ -114,6 +120,9 @@ function App() {
                             bubbles: true,
                           }),
                         );
+                        break;
+                      case 3:
+                        setActiveStep(4);
                         break;
                     }
                   }}
