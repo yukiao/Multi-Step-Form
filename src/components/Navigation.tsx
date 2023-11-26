@@ -34,7 +34,7 @@ const Navigation = ({ activeStep }: NavigationProps) => {
     );
   }
   return (
-    <div className="relative">
+    <div className="relative h-full">
       <img
         src={DesktopSidebar}
         width={274}

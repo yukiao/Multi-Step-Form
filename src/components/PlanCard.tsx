@@ -19,9 +19,9 @@ const PlanCard = ({
 }: PlanCardProps) => {
   return (
     <div
-      className={`flex md:flex-col border ${
+      className={`flex xl:flex-col border ${
         active ? "border-BLUE bg-MAGNOLIA" : "border-LIGHT_GRAY"
-      } hover:border-BLUE rounded-md p-4 space-x-4 md:space-x-0 md:space-y-10`}
+      } hover:border-BLUE rounded-md p-4 space-x-4 xl:space-x-0 xl:space-y-10`}
       onClick={onClick}
     >
       {createElement("img", {

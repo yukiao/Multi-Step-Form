@@ -44,7 +44,11 @@ const Summary = ({ onChangeClick }: SummaryProps) => {
     <div className="flex flex-col">
       <div className="bg-MAGNOLIA p-5 rounded-md">
         <Grid>
-          <div className="flex flex-col border-b border-LIGHT_GRAY pb-5">
+          <div
+            className={`flex flex-col ${
+              selectedAddons.length !== 0 && "border-b border-LIGHT_GRAY pb-5"
+            }`}
+          >
             <span className="font-medium text-BLUE">{`${
               selectedPricingPlan.name
             } (${isYearlySubscription ? "Yearly" : "Monthly"})`}</span>
@@ -55,7 +59,12 @@ const Summary = ({ onChangeClick }: SummaryProps) => {
               Change
             </span>
           </div>
-          <div className="border-b border-LIGHT_GRAY h-full flex items-center justify-end pb-5">
+          <div
+            className={`${
+              selectedAddons.length !== 0 &&
+              "border-b border-LIGHT_GRAY pb-5 h-full"
+            } flex items-center justify-end`}
+          >
             <p className="text-right text-sm font-medium text-BLUE">{`$${
               isYearlySubscription
                 ? selectedPricingPlan.price * 10

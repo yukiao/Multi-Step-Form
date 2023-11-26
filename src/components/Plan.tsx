@@ -38,7 +38,7 @@ const Plan = forwardRef<HTMLFormElement, PlanProps>(({ handleSubmit }, ref) => {
 
   return (
     <form ref={ref} onSubmit={onSubmit(handleSubmit)} className="flex flex-col">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
         {pricingPlans.map((plan, index) => (
           <PlanCard
             key={index}

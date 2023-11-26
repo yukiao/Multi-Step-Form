@@ -24,7 +24,7 @@ function App() {
   return (
     <>
       <div className="bg-MAGNOLIA w-screen max-w-full min-h-screen flex justify-center md:items-center">
-        <div className="md:w-2/3 bg-WHITE shadow-sm rounded-xl md:p-3 pr-0 flex flex-col md:flex-row">
+        <div className="md:w-5/6 lg:w-2/3 bg-WHITE shadow-sm rounded-xl md:p-3 pr-0 flex flex-col md:flex-row">
           <div>
             <Navigation activeStep={activeStep} />
           </div>
