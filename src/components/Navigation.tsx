@@ -19,6 +19,7 @@ const Navigation = ({ activeStep }: NavigationProps) => {
           width={375}
           height={172}
           className="h-auto w-full"
+          alt="mobile-sidebar"
         />
         <div className="absolute top-0 pt-8 flex justify-center w-full space-x-4">
           {steps.map((step, index) => (
@@ -40,6 +41,7 @@ const Navigation = ({ activeStep }: NavigationProps) => {
         width={274}
         height={568}
         className="h-full object-cover"
+        alt="desktop-sidebar"
       />
       <div className="absolute top-0 p-5 pt-10 flex flex-col space-y-8">
         {steps.map((step, index) => (

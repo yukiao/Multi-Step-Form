@@ -114,12 +114,14 @@ function App() {
                     src={ThankYouIcon}
                     width={80}
                     height={80}
+                    alt="thank-you-icon"
                     className="hidden md:block"
                   />
                   <img
                     src={ThankYouIcon}
                     width={60}
                     height={60}
+                    alt="thank-you-icon"
                     className="md:hidden"
                   />
                   <h1 className="font-bold text-BLUE text-[32px]">

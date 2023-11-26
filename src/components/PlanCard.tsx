@@ -29,6 +29,7 @@ const PlanCard = ({
         className: "self-start",
         width: 40,
         height: 40,
+        alt: "plan-icon",
       })}
 
       <div className="flex flex-col">
