@@ -1,7 +1,4 @@
 import PlanCard from "./PlanCard";
-import ArcadeIcon from "../assets/images/icon-arcade.svg";
-import AdvancedIcon from "../assets/images/icon-advanced.svg";
-import ProIcon from "../assets/images/icon-pro.svg";
 import { forwardRef } from "react";
 import Switch from "./Switch";
 import { useAppDispatch, useAppSelector } from "../hooks";
@@ -9,34 +6,11 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { updateIsYearySubscription } from "../features/plan/plan.slice";
-
-type PricingPlan = {
-  iconSrc: string;
-  price: number;
-  name: string;
-};
+import { pricingPlans } from "../data/pricing-plan.data";
 
 interface PlanProps {
   handleSubmit: (values: { value: number }) => void;
 }
-
-const pricingPlans: PricingPlan[] = [
-  {
-    name: "Arcade",
-    iconSrc: ArcadeIcon,
-    price: 9,
-  },
-  {
-    name: "Advanced",
-    iconSrc: AdvancedIcon,
-    price: 12,
-  },
-  {
-    name: "Pro",
-    iconSrc: ProIcon,
-    price: 15,
-  },
-];
 
 const planSchema = z.object({
   value: z.number().refine((val) => val >= 0 && val <= 2, {

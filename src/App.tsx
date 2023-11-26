@@ -9,6 +9,7 @@ import { useAppDispatch } from "./hooks";
 import { setPersonalInfo } from "./features/personalInfo/personalInfo.slice";
 import { updatePlan } from "./features/plan/plan.slice";
 import PickAddons from "./components/PickAddons";
+import Summary from "./components/Summary";
 
 function App() {
   const [activeStep, setActiveStep] = useState<number>(1);
@@ -58,6 +59,9 @@ function App() {
                   />
                 )}
                 {activeStep === 3 && <PickAddons />}
+                {activeStep === 4 && (
+                  <Summary onChangeClick={() => setActiveStep(2)} />
+                )}
                 {/** Main content end */}
               </div>
 
