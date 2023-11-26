@@ -1,6 +1,6 @@
 # Multi-Step Form
 
-This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -31,7 +31,9 @@ Users should be able to:
   - A step is submitted, but no selection has been made
 
 ### Screenshot
+
 #### Desktop
+
 ![Personal Info](./screenshots/desktop/personal-info.png)
 ![Select Plan](./screenshots/desktop/select-plan.png)
 ![Add-Ons](./screenshots/desktop/add-ons.png)
@@ -39,17 +41,17 @@ Users should be able to:
 ![Thank You](./screenshots/desktop/thank.png)
 
 #### Mobile
+
 ![Personal Info](./screenshots/mobile/personal-info.jpeg)
 ![Select Plan](./screenshots/mobile/select-plan.jpeg)
 ![Add-Ons](./screenshots/mobile/add-ons.jpeg)
 ![Summary](./screenshots/mobile/summary.jpeg)
 ![Thank You](./screenshots/mobile/thank-you.jpeg)
 
-
 ### Links
 
 - Solution URL: [Github](https://github.com/yukiao/Multi-Step-Form.git)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Vercel](https://multi-step-form-omega-murex.vercel.app/)
 
 ## My process
 
@@ -60,7 +62,6 @@ Users should be able to:
 - [Typescript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/)
 - [React Redux](https://react-redux.js.org/)
-
 
 ## Author
 
