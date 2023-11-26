@@ -33,8 +33,22 @@ const AddOnBox = ({
           type="checkbox"
           checked={checked}
           onChange={onChange}
-          className="w-5 h-5 accent-PURPLISH_BLUE ring-0"
+          className="relative peer appearance-none w-4 h-4 border border-LIGHT_GRAY rounded-sm bg-white shrink-0 checked:bg-PURPLISH_BLUE checked:border-0 ring-0 outline-0"
         />
+        <svg
+          className="absolute hidden peer-checked:block ml-[2px]"
+          xmlns="http://www.w3.org/2000/svg"
+          width="12"
+          height="9"
+          viewBox="0 0 12 9"
+        >
+          <path
+            fill="none"
+            stroke="#FFF"
+            stroke-width="2"
+            d="m1 4 3.433 3.433L10.866 1"
+          />
+        </svg>
         <div className="flex flex-col space-y-0 ml-4">
           <span className="text-sm text-BLUE font-medium">{title}</span>
           <span className="text-sm text-COOL_GRAY">{description}</span>
